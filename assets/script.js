@@ -151,37 +151,44 @@ fileInput.addEventListener('change', (event) => {
 	}
 	
 	for (let file of event.target.files) {
-		stat_info.textContent = ""
-		stat_str.textContent = "0 / 0"
-		
-		if (file) {
-			fileButton.textContent = "Processing..."
-			const reader = new FileReader()
-			reader.onload = () => {
-				book_loaded = true
-				const file_name_toLowerCase = file.name.toLowerCase()
-				
-				if ( file_name_toLowerCase.endsWith('.txt') ) {
-					get_text(file.name.slice(0, file.name.lastIndexOf(".")), reader.result, true)	
-				} else if ( file_name_toLowerCase.endsWith('.ini') ) {
-					get_text(file.name.slice(0, file.name.lastIndexOf(".")), reader.result, true)	
-				} else if ( file_name_toLowerCase.endsWith('.fb2') ) {
-					get_text(file.name.slice(0, file.name.lastIndexOf(".")), convertFb2ToTxt(reader.result), true)	
-				} else if ( file_name_toLowerCase.endsWith('.epub') ) {
-					convertEpubToTxt(file).then(result => get_text(file.name.slice(0, file.name.lastIndexOf(".")), result, true))
-				} else if ( file_name_toLowerCase.endsWith('.zip') ) {
-					convertZipToTxt(file)
-				}
-				fileButton.textContent = "Opened"
-			}
-			
-			reader.readAsText(file)
-		} else {
-			fileButton.textContent = "Open"
-		}
-	}
+	stat_info.textContent = "";
+	stat_str.textContent = "0 / 0";
 
-})
+	if (file) {
+		fileButton.textContent = "Processing...";
+		const reader = new FileReader();
+
+		reader.onload = () => {
+			book_loaded = true;
+			const file_name_toLowerCase = file.name.toLowerCase();
+
+			if (file_name_toLowerCase.endsWith('.txt')) {
+				get_text(file.name.slice(0, file.name.lastIndexOf(".")), reader.result, true);
+
+			} else if (file_name_toLowerCase.endsWith('.ini')) {
+				get_text(file.name.slice(0, file.name.lastIndexOf(".")), reader.result, true);
+
+			} else if (file_name_toLowerCase.endsWith('.fb2')) {
+				get_text(file.name.slice(0, file.name.lastIndexOf(".")), convertFb2ToTxt(reader.result), true);
+
+			} else if (file_name_toLowerCase.endsWith('.epub')) {
+				convertEpubToTxt(file).then(result =>
+					get_text(file.name.slice(0, file.name.lastIndexOf(".")), result, true)
+				);
+
+			} else if (file_name_toLowerCase.endsWith('.srt')) {
+				const srtText = convertSrtToTxt(reader.result);
+				get_text(file.name.slice(0, file.name.lastIndexOf(".")), srtText, true);
+			}
+
+			fileButton.textContent = "Opened";
+		};
+
+		reader.readAsText(file);
+	} else {
+		fileButton.textContent = "Open";
+	}
+}
 
 function lite_mod() {
 	const display_str = (textArea.style.display == 'none') ? 'block' : 'none'
