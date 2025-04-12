@@ -39,15 +39,15 @@
    
     <div id="div-rate" class="slidecontainer">
       <br>
-      <label for="rate">Speed <output style="float: right;" id="rate-str">+100%</output></label>
+      <label for="rate">Speed <output style="float: right;" id="rate-str">+0%</output></label>
       <select id="rate" class="rate" onchange="document.getElementById('rate-str').textContent=this.options[this.selectedIndex].text">
-        <option value="-50">-50%</option>
-        <option value="-25">-25%</option>
+        <option value="-50">-10%</option>
+        <option value="-25">-5%</option>
         <option value="0">0%</option>
-        <option value="25">+50%</option>
-        <option value="50">+100%</option>
-        <option value="75">+150%</option>
-        <option value="100">+200%</option>
+        <option value="25">+10%</option>
+        <option value="50">+15%</option>
+        <option value="75">+20%</option>
+        <option value="100">+25%</option>
       </select>
     </div>
 
@@ -79,12 +79,12 @@
 
     <div id="div-mergefiles" class="slidecontainer">
       <br>
-      <label for="mergefiles">Merge MP3s by <output style="float: right;" id="mergefiles-str">10 pcs.</output></label>
+      <label for="mergefiles">Merge MP3s by <output style="float: right;" id="mergefiles-str">1</output></label>
       <select id="mergefiles" class="mergefiles" onchange="document.getElementById('mergefiles-str').textContent=this.value + ' pcs.'">
-        <option value="1">1</option>
+        <option value="1" selected>1</option>
+        <option value="2">2</option>
         <option value="5">5</option>
-        <option value="10" selected>10</option>
-        <option value="20">20</option>
+        <option value="10">10</option>
         <option value="50">50</option>
         <option value="100">100</option>
       </select>
