@@ -1,10 +1,14 @@
 <html lang="en"><head></head><body>﻿
 
+
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/assets_styles.css">
   <title>EDGE TTS</title>
+
+
 
   <textarea class="text" id="text-area" placeholder="Text..."></textarea>
   <br>
@@ -13,14 +17,13 @@
 		<button class="settingsbutton" id="settingsbutton">⚙</button>
 		<select class="voices" id="voices" name="voices">
 			<optgroup label="Multilingual">
-				<option value="en-US, AndrewMultilingualNeural">en-US, AndrewMultilingualNeural</option>
+		<option value="en-US, AndrewMultilingualNeural">en-US, AndrewMultilingualNeural</option>
 				<option value="en-US, AvaMultilingualNeural">en-US, AvaMultilingualNeural</option>
 				<option value="en-US, BrianMultilingualNeural">en-US, BrianMultilingualNeural</option>
 				<option value="en-US, EmmaMultilingualNeural">en-US, EmmaMultilingualNeural</option>
 			</optgroup>
-		</select>
+			</select>
     </rowspace>
-
     <rowspace>
 		<select class="pointsselect" id="pointsselect" name="pointsselect">
 			<option>Don't replace periods</option>
@@ -33,6 +36,7 @@
 		<button class="pointstype" id="pointstype" onclick="points_mod()">V1</button>
     </rowspace>
 
+   
     <div id="div-rate" class="slidecontainer">
       <br>
       <label for="rate">Speed <output style="float: right;" id="rate-str">+100%</output></label>
@@ -95,12 +99,10 @@
 		<button id="file-button-lex">Upload</button>
 		<button id="file-button">Open</button>
 	</myspace>
-
     <input type="file" id="file-input-lex" accept=".lexx">
     <input type="file" id="file-input" accept=".txt, .fb2, .epub, .ini, .zip" multiple="">
 	<button class="save" id="savebutton">Save to MP3</button>
 	<br>
-
 	<textarea readonly="" class="text" id="stat-area"></textarea>
 	<br>
     <label id="stat-label"><output id="stat-info"></output> <output style="float: right;" id="stat-str">0 / 0</output></label>
@@ -118,5 +120,7 @@
   <script src="js/processing_file.js"></script>
   <script src="js/socket_edge_tts.js"></script>
   <script src="js/script.js"></script>
+
+
 
 </body></html>
