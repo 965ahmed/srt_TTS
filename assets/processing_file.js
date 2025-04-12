@@ -1,4 +1,4 @@
-﻿class ProcessingFile {
+class ProcessingFile {
 	constructor(_file_name, _text, _FIRST_STRINGS_LENGTH, _LAST_STRINGS_LENGTH, _lang_lexx) {
 		this.file_names = []
 		this.file_names.push([_file_name, 0])
@@ -55,12 +55,12 @@
 			  fix_text = fix_text.replace(/\./g, '\r\n\r\n\r\n\r\n')
 		  } else {
 			  var new_point = pointsSelect.value[pointsSelect.value.length - 1]
-			  if (pointsType.innerHTML === "V1") {
+			  if (pointsType.innerHTML === "A1") {
 				  fix_text = fix_text.replace(/\./g, new_point)
-			  } else if (pointsType.innerHTML === "V2") {
+			  } else if (pointsType.innerHTML === "A2") {
 				  fix_text = fix_text.replace(new RegExp('\\.[ \\t]{1,}\\n', 'g'), '.\n')
 				  fix_text = fix_text.replace(new RegExp('\\.(?![\\r\\n])', 'g'), new_point)
-			  } else if (pointsType.innerHTML === "V3") {
+			  } else if (pointsType.innerHTML === "A3") {
 				  fix_text = fix_text.replace(new RegExp('\\.[ \\t]{1,}\\n', 'g'), '.\n')
 				  fix_text = fix_text.replace(new RegExp('\\.[ \\t]', 'g'), new_point + ' ')
 			  }
