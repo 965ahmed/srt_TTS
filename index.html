@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html><body><p>&#65279;
+<html lang="en"><head></head><body>﻿
 
 
-</p>
+
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="css/assets-styles.css">
+  <link rel="stylesheet" href="css/styles.css">
   <title>EDGE TTS</title>
 
 
@@ -15,7 +14,7 @@
   <br>
   <section class="options">
     <rowspace>
-		<button class="settingsbutton" id="settingsbutton">&#9881;</button>
+		<button class="settingsbutton" id="settingsbutton">⚙</button>
 		<select class="voices" id="voices" name="voices">
 			<optgroup label="Multilingual">
 				<option value="de-DE, FlorianMultilingualNeural">de-DE, FlorianMultilingualNeural</option>
@@ -352,19 +351,19 @@
       <label for="max-threads">Merge MP3s by <output style="float: right;" id="mergefiles-str">10 pcs.</output></label>
       <input type="range" min="1" max="100" value="10" step="1" class="mergefiles" id="mergefiles">
     </div>
-	<label id="dop-settings-label">&#65088;</label>
+	<label id="dop-settings-label">﹀</label>
 	<br>
     <myspace class="myspace">
-		<label id="left-label"><a href="RU.html" id="is-lexx">Dictionary</a></label>
+		<label id="left-label"><a href="./RU.lexx" id="is-lexx">Dictionary</a></label>
 		<label id="right-label">Books</label>
 		<button id="file-button-lex">Upload</button>
 		<button id="file-button">Open</button>
 	</myspace>
     <input type="file" id="file-input-lex" accept=".lexx">
-    <input type="file" id="file-input" accept=".txt, .fb2, .epub, .ini, .zip" multiple>
+    <input type="file" id="file-input" accept=".txt, .fb2, .epub, .ini, .zip" multiple="">
 	<button class="save" id="savebutton">Save to MP3</button>
 	<br>
-	<textarea readonly class="text" id="stat-area"></textarea>
+	<textarea readonly="" class="text" id="stat-area"></textarea>
 	<br>
     <label id="stat-label"><output id="stat-info"></output> <output style="float: right;" id="stat-str">0 / 0</output></label>
   </section>
@@ -376,11 +375,11 @@
     </div>
   </section>
 
-  <script src="js/assets-jszip.min.js"></script>
-  <script src="js/assets-texts_converter.js"></script>
-  <script src="js/assets-processing_file.js"></script>
-  <script src="js/assets-socket_edge_tts.js"></script>
-  <script src="js/assets-script.js"></script>
+  <script src="js/jszip.min.js"></script>
+  <script src="js/texts_converter.js"></script>
+  <script src="js/processing_file.js"></script>
+  <script src="js/socket_edge_tts.js"></script>
+  <script src="js/script.js"></script>
 
 
 
