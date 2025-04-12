@@ -1,4 +1,4 @@
-﻿//FB2 to TXT
+// FB2 to TXT
 function convertFb2ToTxt(fb2String) {
     const parser = new DOMParser();
     const fb2Doc = parser.parseFromString(fb2String.replace(/<p>/g, "\n<p>"), 'application/xml');
@@ -16,17 +16,17 @@ function convertFb2ToTxt(fb2String) {
     return txtString;
 }
 
-//EPUB to TXT
+// EPUB to TXT
 async function convertEpubToTxt(epubBinary) {
     const zip = await JSZip.loadAsync(epubBinary);
     const textFiles = [];
-	var toc_path = ""
-	zip.forEach((relativePath, zipEntry) => {
-		if ( zipEntry.name.endsWith('.ncx') ) {
-			toc_path = relativePath.slice(0, relativePath.lastIndexOf("toc.ncx"))
-		}
-	});	
-	
+    let toc_path = "";
+    zip.forEach((relativePath, zipEntry) => {
+        if (zipEntry.name.endsWith('.ncx')) {
+            toc_path = relativePath.slice(0, relativePath.lastIndexOf("toc.ncx"));
+        }
+    });
+
     const toc = await zip.file(toc_path + 'toc.ncx').async('text');
     const parser = new DOMParser();
     const tocDoc = parser.parseFromString(toc, 'application/xml');
@@ -54,32 +54,26 @@ async function convertEpubToTxt(epubBinary) {
             textContent += '\n\n';
         }
     }
-    return await textContent.trim();
+    return textContent.trim();
 }
 
+// SRT to TXT (custom logic)
+function convertSrtToTxt(input) {
+    // Step 1: Replace all dots (.) with semicolons (;)
+    let modifiedInput = input.replace(/\./g, ';');
+    let output = '';
 
-//ZIP to TXT
-function convertZipToTxt(zipFile) {
+    // Step 2: Convert SRT blocks
+    const srtBlocks = modifiedInput.split(/\n\s*\n/);
+    for (let block of srtBlocks) {
+        const lines = block.split('\n');
+        if (lines.length >= 3) {
+            lines.splice(0, 2); // Remove block number and timecode
+            output += lines.join('\n') + '\n.\n';
+        } else {
+            output += block + '\n.\n';
+        }
+    }
 
-    JSZip.loadAsync(zipFile)
-    .then(function (zip) {
-        zip.forEach(function (relativePath, file) {
-			const file_name_toLowerCase = file.name.toLowerCase()
-			if ( file_name_toLowerCase.endsWith('.txt') ) {
-				file.async('text').then( result => get_text(file.name.slice(0, file.name.lastIndexOf(".")), result, true) )
-			} else if ( file_name_toLowerCase.endsWith('.fb2') ) {
-				file.async('text').then( result => get_text(file.name.slice(0, file.name.lastIndexOf(".")), convertFb2ToTxt(result), true) )
-			} else if ( file_name_toLowerCase.endsWith('.epub') ) {
-				file.async('ArrayBuffer').then( result => unzip_epub(file, result) )
-			}	
-        })
-    }, function (e) {
-        console.log(e.message)
-    })
-}
-
-function unzip_epub(file, file_text) {				
-	const blob = new Blob([file_text], { type: 'application/epub+zip' });
-	const epub_file = new File([blob], 'my_epub_file_name.epub', { type: 'application/epub+zip' });					
-	convertEpubToTxt(epub_file).then(result => get_text(file.name.slice(0, file.name.lastIndexOf(".")), result, true))
+    return output.trim();
 }
