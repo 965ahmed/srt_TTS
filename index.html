@@ -36,64 +36,31 @@
 		<button class="pointstype" id="pointstype" onclick="points_mod()">V1</button>
     </rowspace>
 
-   
     <div id="div-rate" class="slidecontainer">
-      <br>
+	  <br>
       <label for="rate">Speed <output style="float: right;" id="rate-str">+100%</output></label>
-      <select id="rate" class="rate" onchange="document.getElementById('rate-str').textContent=this.options[this.selectedIndex].text">
-        <option value="-50">-50%</option>
-        <option value="-25">-25%</option>
-        <option value="0">0%</option>
-        <option value="25">+50%</option>
-        <option value="50">+100%</option>
-        <option value="75">+150%</option>
-        <option value="100">+200%</option>
-      </select>
+      <input type="range" min="-50" max="100" value="25" step="5" class="rate" id="rate" list="ratemarks">
     </div>
-
     <div id="div-pitch" class="slidecontainer">
-      <br>
+	  <br>
       <label for="pitch">Pitch <output style="float: right;" id="pitch-str">+0Hz</output></label>
-      <select id="pitch" class="pitch" onchange="document.getElementById('pitch-str').textContent=this.options[this.selectedIndex].text">
-        <option value="-50">-50Hz</option>
-        <option value="-25">-25Hz</option>
-        <option value="0">+0Hz</option>
-        <option value="25">+25Hz</option>
-        <option value="50">+50Hz</option>
-      </select>
+      <input type="range" min="-50" max="50" value="0" step="0" class="pitch" id="pitch">
     </div>
-
     <div id="div-threads" class="slidecontainer">
-      <br>
+	  <br>
       <label for="max-threads">Number of threads <output style="float: right;" id="max-threads-int">20</output></label>
-      <select id="max-threads" class="max-threads" onchange="document.getElementById('max-threads-int').textContent=this.value">
-        <option value="1">1</option>
-        <option value="5">5</option>
-        <option value="10">10</option>
-        <option value="15">15</option>
-        <option value="20" selected>20</option>
-        <option value="25">25</option>
-        <option value="30">30</option>
-      </select>
+      <input type="range" min="1" max="30" value="20" step="1" class="max-threads" id="max-threads">
     </div>
-
     <div id="div-mergefiles" class="slidecontainer">
-      <br>
-      <label for="mergefiles">Merge MP3s by <output style="float: right;" id="mergefiles-str">10 pcs.</output></label>
-      <select id="mergefiles" class="mergefiles" onchange="document.getElementById('mergefiles-str').textContent=this.value + ' pcs.'">
-        <option value="1">1</option>
-        <option value="5">5</option>
-        <option value="10" selected>10</option>
-        <option value="20">20</option>
-        <option value="50">50</option>
-        <option value="100">100</option>
-      </select>
+	  <br>
+      <label for="max-threads">Merge MP3s by <output style="float: right;" id="mergefiles-str">10 pcs.</output></label>
+      <input type="range" min="1" max="100" value="10" step="1" class="mergefiles" id="mergefiles">
     </div>
-
 	<label id="dop-settings-label">﹀</label>
 	<br>
-
     <myspace class="myspace">
+
+	
 		<label id="left-label"><a href="./RU.lexx" id="is-lexx">Dictionary</a></label>
 		<label id="right-label">Books</label>
 		<button id="file-button-lex">Upload</button>
